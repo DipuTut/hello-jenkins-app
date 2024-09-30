@@ -5,24 +5,20 @@ pipeline {
         GITHUB_REPO = 'https://github.com/DipuTut/hello-jenkins-app.git'
     }
     
-    stages {
-        
+    stages {     
         stage('Checkout') {
             
             steps {
                 git url: "${GITHUB_REPO}", branch: 'main'
-            }
-            
-        }
-        
+            }     
+        }     
         stage('Build') {
             
             steps {
                 echo 'Building the app...'
                 sh 'cat app.txt'
                 echo 'Build successful.'
-            }
-            
+            }        
         }
         
         stage('Test') {
@@ -36,8 +32,7 @@ pipeline {
                     }
                 }
                 echo 'Testing successful'
-            }
-            
+            }            
         }
         
         stage('Package') {
@@ -45,12 +40,8 @@ pipeline {
             steps {
                 echo 'Packaging...'
                 sh 'tar -cvf app.tar app.txt'
-                echo 'Package successful.'
-                
-            }
-            
+                echo 'Package successful.'             
+            }     
         }
-        
     }
-    
 }
